@@ -33,4 +33,6 @@ gem 'rspec-rails', group: [:test, :development]
 gem 'quiet_assets', group: :development
 
 # Makes JSON serialization more pleasant.
-gem "active_model_serializers"
+gem 'active_model_serializers'
+
+gem 'factory_girl_rails'
