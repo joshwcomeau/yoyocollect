@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  resources :manufacturers
+  namespace :api, defaults: { format: :json } do
+    resources :manufacturers, only: [:index, :show] do
+      resources :yoyos
+    end
+  end
 
-  resources :yoyos
+  # root 'yoyo#list' # Temporary route, just for testing purposes.
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
