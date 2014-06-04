@@ -3,5 +3,5 @@
 <h4>Check out all the yoyos:</h4>
 
 <ul>
-	<li ng-repeat="yoyo in yoyoList">{{ yoyo["model"] }}</li>
+	<li ng-repeat="yoyo in yoyoList"><a ng-click="loadDetails(yoyo.id)" href="">{{ yoyo.model }}</a></li>
 </ul>

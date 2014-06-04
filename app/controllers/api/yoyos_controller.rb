@@ -5,5 +5,9 @@ module Api
 		def index
 			respond_with Yoyo.all
 		end
+
+		def show
+			respond_with Yoyo.find(params[:id])
+		end
 	end
 end

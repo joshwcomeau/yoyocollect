@@ -10,5 +10,12 @@ angular
 			});
 		}
 
+		API.getYoyoInfo = function(idnum) {
+			return $http({
+				method: 'GET',
+				url: '/api/yoyos/'+ idnum
+			})
+		}
+
 		return API;
 	})
