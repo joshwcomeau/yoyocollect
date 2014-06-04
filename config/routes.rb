@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  namespace :api, defaults: { format: :json } do
+  namespace :api do
     resources :manufacturers, only: [:index, :show] do
       resources :yoyos
     end

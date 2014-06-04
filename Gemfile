@@ -5,14 +5,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -25,9 +17,18 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 
-# CUSTOM GEMS (NON-RAILS-DEFAULTS)
 
-gem 'rspec-rails', group: [:test, :development]
+gem 'sass-rails',   '~> 4.0.3'
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'angularjs-rails'
+
+
+# CUSTOM GEMS (NON-RAILS-DEFAULTS)
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
 
 # Shuts rails up about images, CSS and other assets
 gem 'quiet_assets', group: :development
