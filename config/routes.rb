@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+
+  root "application#index"
+
   namespace :api, defaults: { format: :json } do
-    resources :manufacturers, only: [:index, :show] do
-      resources :yoyos
-    end
+    resources :manufacturers, only: [:index, :show]
+    resources :yoyos
+    
   end
 
   # root 'yoyo#list' # Temporary route, just for testing purposes.

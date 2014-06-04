@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="app">
 <head>
   <title>Yoyocollect</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body ng-controller="libraryController">
 
-<%= yield %>
+<div ng-view>
+	<%= yield %>
+</div>
 
 </body>
 </html>
