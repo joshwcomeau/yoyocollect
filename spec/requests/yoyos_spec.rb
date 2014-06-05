@@ -50,6 +50,24 @@ describe "Yoyos API" do
 			expect(yoyo["width"]).to eq("43.25")
 		end
 
+		it "can create a new yoyo" do
+	    post "/api/yoyos", {
+	    	yoyo: {
+		    	model: 		"Puffin 2",
+		    	diameter: "53.4",
+		    	width: 		"42.3",
+		    	weight:   "63.0" 
+		    }
+	    }, format: :json
+
+	    # response.should be_success
+	    expect(response.status).to eq(200)
+
+	    yoyo = json
+
+	    expect(yoyo["model"]).to eq("Puffin 2")
+	  end
+
 
 	end
 end

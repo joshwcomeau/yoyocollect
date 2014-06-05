@@ -11,6 +11,20 @@ module Api
 			respond_with Yoyo.find(params[:id])
 		end
 
+		def create
+			@yoyo = Yoyo.new(yoyo_params)
+			if @yoyo.save
+				render json: @yoyo 
+				
+			end
+		end
+
+
+		private
+
+		def yoyo_params
+			params.require(:yoyo).permit(:model, :diameter, :width, :weight)
+		end
 		
 	end
 end
