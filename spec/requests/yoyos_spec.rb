@@ -2,9 +2,12 @@ require 'rails_helper'
 
 describe "Yoyos API" do
 	describe "GET /api/yoyos" do
+		before(:each) do
+			@company = FactoryGirl.create(:manufacturer, name: "YoYoCompany")
+		end
+
 		it "returns an array of manufacturer names" do
-			company = FactoryGirl.create(:manufacturer, name: "YoYoCompany")
-			company = FactoryGirl.create(:manufacturer, name: "Company Lodge Yoyo Works")
+			FactoryGirl.create(:manufacturer, name: "Company Lodge Yoyo Works")
 
 			get "/api/yoyos", {}, { "Accept" => "application/json" }
 
@@ -18,11 +21,10 @@ describe "Yoyos API" do
 		end
 
 		it "returns an array of yoyos" do
-			company = FactoryGirl.create(:manufacturer, name: "YoYoCompany")
-			FactoryGirl.create(:yoyo, manufacturers: [company], model: "Spinning Mayhem")
-			FactoryGirl.create(:yoyo, manufacturers: [company], model: "Spinning Mayhem 2")
-			company2 = FactoryGirl.create(:manufacturer, name: "YoYoCompany2")
-			FactoryGirl.create(:yoyo, manufacturers: [company2], model: "Wooly Elephant")
+			FactoryGirl.create(:yoyo, manufacturers: [@company], model: "Spinning Mayhem")
+			FactoryGirl.create(:yoyo, manufacturers: [@company], model: "Spinning Mayhem 2")
+			@company2 = FactoryGirl.create(:manufacturer, name: "YoYoCompany2")
+			FactoryGirl.create(:yoyo, manufacturers: [@company2], model: "Wooly Elephant")
 
 			get "/api/yoyos", {}, { "Accept" => "application/json" }
 
