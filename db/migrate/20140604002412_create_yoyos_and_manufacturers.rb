@@ -1,4 +1,4 @@
-class CreateYoyos < ActiveRecord::Migration
+class CreateYoyosAndManufacturers < ActiveRecord::Migration
   def change
     create_table :yoyos do |t|
     	t.string :model
