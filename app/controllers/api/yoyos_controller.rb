@@ -13,6 +13,13 @@ module Api
 
 		def create
 			@yoyo = Yoyo.new(yoyo_params)
+
+			if params[:manufacturers]
+				params[:manufacturers].each do |m|
+					@yoyo.manufacturers << Manufacturer.find(m)
+				end
+			end
+			
 			if @yoyo.save
 				render json: @yoyo 
 				
@@ -25,6 +32,8 @@ module Api
 		def yoyo_params
 			params.require(:yoyo).permit(:model, :diameter, :width, :weight)
 		end
+
+
 		
 	end
 end

@@ -3,8 +3,8 @@ require 'rails_helper'
 describe "Yoyos API" do
 	describe "GET /api/yoyos" do
 		before(:each) do
-			@company  = FactoryGirl.create(:manufacturer, name: "YoYoCompany")
-			@company2 = FactoryGirl.create(:manufacturer, name: "Company Lodge Yoyo Works")
+			@company  = FactoryGirl.create(:manufacturer, name: "YoYoCompany", id: 1)
+			@company2 = FactoryGirl.create(:manufacturer, name: "Company Lodge Yoyo Works", id: 2)
 			@yoyo1 		= FactoryGirl.create(:yoyo, manufacturers: [@company], model: "Spinning Mayhem", diameter: 55, width:43.25)
 			@yoyo2 		= FactoryGirl.create(:yoyo, manufacturers: [@company], model: "Spinning Mayhem 2")
 			@yoyo3 		= FactoryGirl.create(:yoyo, manufacturers: [@company2], model: "Wooly Elephant")
@@ -52,6 +52,25 @@ describe "Yoyos API" do
 
 		it "can create a new yoyo" do
 	    post "/api/yoyos", {
+	    	yoyo: {
+		    	model: 		"Puffin 2",
+		    	diameter: "53.4",
+		    	width: 		"42.3",
+		    	weight:   "63.0" 
+		    }
+	    }, format: :json
+
+	    # response.should be_success
+	    expect(response.status).to eq(200)
+
+	    yoyo = json
+
+	    expect(yoyo["model"]).to eq("Puffin 2")
+	  end
+
+		it "can create a new yoyo that belongs to multiple manufacturers" do
+	    post "/api/yoyos", {
+	    	manufacturers: [1, 2],
 	    	yoyo: {
 		    	model: 		"Puffin 2",
 		    	diameter: "53.4",
