@@ -13,8 +13,7 @@ describe "Yoyos API" do
 
 			expect(response.status).to eq(200)
 
-			body = JSON.parse(response.body)
-			manufacturers = body.map { |m| m["name"] }
+			manufacturers = json.map { |m| m["name"] }
 
 			expect(manufacturers).to match_array(["YoYoCompany", "Company Lodge Yoyo Works"])
 
@@ -30,9 +29,8 @@ describe "Yoyos API" do
 
 			expect(response.status).to eq(200)
 
-			body = JSON.parse(response.body)
 			yoyos = []
-			body.each do |m|
+			json.each do |m|
 				m["yoyos"].each do |y|
 					yoyos << y["model"]
 				end
@@ -41,5 +39,7 @@ describe "Yoyos API" do
 			expect(yoyos).to match_array(["Spinning Mayhem", "Spinning Mayhem 2", "Wooly Elephant"])
 
 		end
+
+
 	end
 end
