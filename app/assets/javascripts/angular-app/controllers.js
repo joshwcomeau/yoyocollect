@@ -13,6 +13,12 @@ angular
 		$scope.loadDetails = function(idnum) {
 			$location.path('/library/'+idnum);
 		}
+
+		// Click function to add a new yoyo to the library 
+		// (I'll need to add auth to this at some point)
+		$scope.newYoyo = function() {
+			$location.path('/library/new');
+		}
 	})
 
 	// Yoyo Controller (Yoyo Show)
@@ -22,4 +28,9 @@ angular
 		APIservice.getYoyoInfo($scope.id).success(function(response) {
 			$scope.yoyo = response;
 		});
+	})
+
+	// NewYoyo Controller (Yoyo New/Create)
+	.controller('newYoyoController', function($scope, APIservice) {
+		// Add service for posting yoyo, connect to scope here.
 	});
