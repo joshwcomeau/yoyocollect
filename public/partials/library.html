@@ -2,6 +2,9 @@
 
 <h4>Check out all the yoyos:</h4>
 
-<ul>
-	<li ng-repeat="yoyo in yoyoList"><a ng-click="loadDetails(yoyo.id)" href="">{{ yoyo.model }}</a></li>
-</ul>
+<div ng-repeat="manufacturer in yoyoList">
+	<h3>{{ manufacturer.name }}</h3>
+	<ul>
+		<li ng-repeat="yoyo in manufacturer.yoyos"><a ng-click="loadDetails(yoyo.id)" href="">{{ yoyo.model }}</a></li>
+	</ul>
+</div>

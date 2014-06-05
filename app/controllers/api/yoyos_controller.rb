@@ -3,7 +3,8 @@ module Api
 		respond_to :json
 
 		def index
-			respond_with Yoyo.all
+			@manufacturers = Manufacturer.all
+			render :json => @manufacturers.to_json(:include => [:yoyos])
 		end
 
 		def show
