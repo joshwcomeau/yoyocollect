@@ -30,6 +30,9 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end
 
+gem "sorcery", github: "NoamB/sorcery"
+gem 'ng-rails-csrf'
+
 # Shuts rails up about images, CSS and other assets
 gem 'quiet_assets', group: :development
 
