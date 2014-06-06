@@ -38,6 +38,16 @@ describe "Yoyos API" do
 
 		end
 
+		it "returns information about a specific manufacturer." do
+			get "/api/manufacturers/#{@company.id}", {}, { "Accept" => "application/json" }
+
+			expect(response.status).to eq(200)
+
+			manufacturer = json
+
+			expect(manufacturer["name"]).to eq("YoYoCompany")
+		end
+
 		it "returns information about a specific yoyo." do
 			get "/api/yoyos/#{@yoyo1.id}", {}, { "Accept" => "application/json" }
 
