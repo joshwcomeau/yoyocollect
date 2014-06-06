@@ -15,7 +15,7 @@ module Api
 			@yoyo = Yoyo.new(yoyo_params)
 
 			if params[:manufacturer]
-				@yoyo.manufacturers = [Manufacturer.find(params[:manufacturer])]
+				@yoyo.manufacturers = [ Manufacturer.find( params[:manufacturer] ) ]
 			elsif params[:manufacturers]
 				params[:manufacturers].each do |m|
 					@yoyo.manufacturers << Manufacturer.find(m)
