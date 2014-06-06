@@ -24,5 +24,13 @@ angular
 			})
 		}
 
+		API.createYoyo = function(postData) {
+			return $http({
+				method: 'POST',
+				data: postData,
+				url: '/api/yoyos'
+			})
+		}
+
 		return API;
 	})

@@ -32,7 +32,20 @@ angular
 
 	// NewYoyo Controller (Yoyo New/Create)
 	.controller('newYoyoController', function($scope, APIservice) {
+		// Load manufacturer list
 		APIservice.getManufacturers().success(function(response) {
 			$scope.manufacturers = response;
 		});
+
+		// Send AJAX post request to create yoyo
+		$scope.submitYoyo = function() {
+			var postData = $scope.yoyo;
+			APIservice.createYoyo(postData)
+			.success(function(response) {
+				$scope.submitStatus = "Success! Yoyo has been added to DB.";
+			}).error(function(response, status) {
+				$scope.submitStatus = "Error: " + status;
+			});
+		}
+
 	});
