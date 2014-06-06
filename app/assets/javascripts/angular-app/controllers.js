@@ -32,5 +32,7 @@ angular
 
 	// NewYoyo Controller (Yoyo New/Create)
 	.controller('newYoyoController', function($scope, APIservice) {
-		// Add service for posting yoyo, connect to scope here.
+		APIservice.getManufacturers().success(function(response) {
+			$scope.manufacturers = response;
+		});
 	});

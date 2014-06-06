@@ -17,5 +17,12 @@ angular
 			})
 		}
 
+		API.getManufacturers = function() {
+			return $http({
+				method: 'GET',
+				url: '/api/manufacturers'
+			})
+		}
+
 		return API;
 	})
