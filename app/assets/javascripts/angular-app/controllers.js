@@ -52,14 +52,28 @@ angular
 	})
 
 
-	.controller('userController', function($scope, APIservice) {
+	.controller('userController', function($scope, APIservice, $window) {
+		// Register new user
 		$scope.submitRegistration = function() {
-			var postData = $scope.user
-			APIservice.createUser(postData)
+			APIservice.createUser($scope.user)
 			.success(function(response) {
 				$scope.submitStatus = "Success! You are now registered.";
 			}).error(function(response, status) {
 				$scope.submitStatus = "Error: " + status;
+			});
+		}
+
+		// Log in!
+		$scope.login = function() {
+			APIservice.authenticate($scope.user)
+			.success(function(response) {
+				$scope.submitStatus = "Success! Logged in."
+				$window.sessionStorage.token = response.token;
+				$window.sessionStorage.email = response.email;
+			}).error(function(response) {
+				delete $window.sessionStorage.token
+				delete $window.sessionStorage.email
+				$scope.submitStatus = "Invalid email or password."
 			});
 		}
 	});

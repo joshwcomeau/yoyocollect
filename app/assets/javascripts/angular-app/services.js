@@ -42,5 +42,15 @@ angular
 			})
 		}
 
+		API.authenticate = function(postData) {
+			return $http({
+				method: 'POST',
+				data: {
+					user: postData
+				},
+				url: '/api/login'
+			})
+		}
+
 		return API;
 	})

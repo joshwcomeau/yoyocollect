@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :manufacturers, only: [:index, :show]
     resources :users, except: [:new, :edit]
     resources :yoyos
+
+    post 'login' => 'login#authenticate'
     
   end
 
