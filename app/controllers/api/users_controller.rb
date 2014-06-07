@@ -5,16 +5,22 @@ module Api
 		def create
 			@user = User.new(user_params)
 
+
 			if @user.save
-				render json: {
-					saved: "true",
-					status: 200
-				}
-			else
-				render json: {
-					saved: "false",
-					status: 500
-				}
+				# Associate an API key with this user.
+				@api_key = ApiKey.new(user_id: @user.id)
+				if @api_key.save
+					render json: {
+						saved: "true",
+						status: 200
+					}
+				else
+					@user.delete
+					render json: {
+						saved: "false",
+						status: 500
+					}
+				end
 			end
 		end
 
