@@ -1,6 +1,7 @@
-class User < ActiveRecord::Base
-  authenticates_with_sorcery!
+require 'bcrypt'
 
+class User < ActiveRecord::Base
+  include BCrypt
   has_one :api_key
 
   after_create :create_api_key

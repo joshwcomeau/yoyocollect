@@ -24,13 +24,12 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'bower-rails'
 
+gem 'bcrypt', '~> 3.1.7'
 
 # CUSTOM GEMS (NON-RAILS-DEFAULTS)
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
 end
-
-gem "sorcery", github: "NoamB/sorcery"
 
 # Shuts rails up about images, CSS and other assets
 gem 'quiet_assets', group: :development
