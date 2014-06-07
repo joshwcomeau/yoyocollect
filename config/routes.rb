@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :manufacturers, only: [:index, :show]
+    resources :users, except: [:new, :edit]
     resources :yoyos
     
   end

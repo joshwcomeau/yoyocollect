@@ -21,6 +21,7 @@ angular
 		}
 	})
 
+
 	// Yoyo Controller (Yoyo Show)
 	.controller('yoyoController', function($scope, $routeParams, APIservice) {
 		$scope.id = $routeParams.id;
@@ -29,6 +30,7 @@ angular
 			$scope.yoyo = response;
 		});
 	})
+
 
 	// NewYoyo Controller (Yoyo New/Create)
 	.controller('newYoyoController', function($scope, APIservice) {
@@ -47,5 +49,17 @@ angular
 				$scope.submitStatus = "Error: " + status;
 			});
 		}
+	})
 
+
+	.controller('userController', function($scope, APIservice) {
+		$scope.submitRegistration = function() {
+			var postData = $scope.user
+			APIservice.createUser(postData)
+			.success(function(response) {
+				$scope.submitStatus = "Success! You are now registered.";
+			}).error(function(response, status) {
+				$scope.submitStatus = "Error: " + status;
+			});
+		}
 	});

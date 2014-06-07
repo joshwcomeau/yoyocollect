@@ -32,5 +32,15 @@ angular
 			})
 		}
 
+		API.createUser = function(postData) {
+			return $http({
+				method: 'POST',
+				data: {
+					user: postData
+				},
+				url: '/api/users'
+			})
+		}
+
 		return API;
 	})
