@@ -28,6 +28,16 @@ module Api
 			end
 		end
 
+		def update
+			@yoyo = Yoyo.find(params[:id])
+
+			if @yoyo.update(yoyo_params)
+				render json: @yoyo, status: 200
+			else
+				render status: 500
+			end
+		end
+
 
 		private
 

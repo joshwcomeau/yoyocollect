@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def fetch_token
+  	request.headers[:HTTP_AUTHORIZATION]
+  end
+
+  def stored_key?
+  	fetch_token.present?
+  end
+
 end

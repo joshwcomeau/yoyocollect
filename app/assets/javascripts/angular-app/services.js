@@ -24,6 +24,14 @@ angular
 			})
 		}
 
+		API.updateYoyo = function(idnum, postData) {
+			return $http({
+				method: 'PATCH',
+				data: postData,
+				url: '/api/yoyos/'+idnum
+			})
+		}
+
 		API.createYoyo = function(postData) {
 			return $http({
 				method: 'POST',
