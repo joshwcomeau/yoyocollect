@@ -1,7 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  include BCrypt
+  has_secure_password
   has_one :api_key
 
   after_create :create_api_key

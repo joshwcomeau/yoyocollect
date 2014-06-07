@@ -3,10 +3,12 @@ module Api
 		respond_to :json
 
 		def authenticate
-			if login(params[:user][:email], params[:user][:password])
+			@user = User.where(email: params[:user][:email]).last
+
+			if @user && @user.authenticate(params[:user][:password])
 				render json: {
-					token: current_user.api_key.access_token,
-					email: current_user.email
+					token: @user.api_key.access_token,
+					email: @user.email
 				}, status: 200
 			else 
 				render json: {
