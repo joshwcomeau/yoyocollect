@@ -77,7 +77,6 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    ng-rails-csrf (0.1.0)
     oauth (0.4.7)
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
@@ -167,7 +166,6 @@ DEPENDENCIES
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
-  ng-rails-csrf
   pg
   quiet_assets
   rails (= 4.1.1)

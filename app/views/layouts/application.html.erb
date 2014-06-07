@@ -8,7 +8,12 @@
 </head>
 <body>
 
-<div ng-view>
+<div id="login-panel">
+	<div class="logged_out" ng-hide="current_user">Not Logged In.</div>
+	<div class="logged_in" ng-show="current_user">Logged in as {{current_user.email}}</div>
+</div>
+
+<div ng-view="">
 	<%= yield %>
 </div>
 
