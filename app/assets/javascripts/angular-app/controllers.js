@@ -68,12 +68,12 @@ angular
 			APIservice.authenticate($scope.user)
 			.success(function(response) {
 				$scope.submitStatus = "Success! Logged in."
-				$window.sessionStorage.token = response.token;
-				$window.sessionStorage.email = response.email;
+				$window.localStorage.token = response.token;
+				$window.localStorage.email = response.email;
 			}).error(function(response) {
-				delete $window.sessionStorage.token
-				delete $window.sessionStorage.email
-				$scope.submitStatus = "Invalid email or password."
+				delete $window.localStorage.token
+				delete $window.localStorage.email
+				$scope.submitStatus = response.message
 			});
 		}
 	});
