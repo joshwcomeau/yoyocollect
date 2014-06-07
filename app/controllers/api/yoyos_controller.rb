@@ -29,10 +29,14 @@ module Api
 		end
 
 		def update
-			@yoyo = Yoyo.find(params[:id])
+			if stored_key?
+				@yoyo = Yoyo.find(params[:id])
 
-			if @yoyo.update(yoyo_params)
-				render json: @yoyo, status: 200
+				if @yoyo.update(yoyo_params)
+					render json: @yoyo, status: 200
+				else
+					render status: 500
+				end
 			else
 				render status: 500
 			end
